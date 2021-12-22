@@ -1,0 +1,56 @@
+class Solution {
+    public int heightChecker(int[] heights) {
+        int[] exp = new int[heights.length];
+        
+        for (int i = 0; i < heights.length; i++) {
+            exp[i] = heights[i];
+        }
+        
+        for (int j = 0; j < exp.length; j++) {
+            for (int i = 0; i < exp.length - 1; i++) {
+                if (exp[i] > exp[i + 1]) {
+                    int swap = exp[i];
+                    exp[i] = exp[i + 1];
+                    exp[i + 1] = swap;
+                }
+            }
+        }
+        
+        int count = 0;
+        for (int i = 0; i < exp.length; i++) {
+            if (heights[i] != exp[i])
+                count++;
+        }
+        
+        return count;
+        
+        /*
+        int[] exp = new int[heights.length];
+        
+        int j = 0;
+        while (j < exp.length) {
+            int min = 101;
+            int minIndex = 0;
+            for (int i = 0; i < heights.length; i++) {
+                if (min > heights[i] && heights[i] != -1) {
+                    min = heights[i];
+                    minIndex = i;
+                }
+            }
+            heights[minIndex] = -1;
+            exp[j++] = min;
+        }
+        
+        for (int i = 0; i < exp.length; i++)
+            System.out.print(exp[i]);
+        
+        int count = 0;
+        for (int i = 0; i < heights.length; i++) {
+            if (heights[i] != exp[i])
+                count++;
+        }
+        
+        return count;
+        */
+    }
+}
