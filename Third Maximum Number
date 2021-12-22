@@ -1,0 +1,37 @@
+class Solution {
+    public int thirdMax(int[] nums) {
+        int max = -2147483648;
+        for (int i = 0; i < nums.length; i++) {
+            if (max <= nums[i])
+                max = nums[i];
+        }
+        int firstMax = max;
+        
+        boolean secondH = false;
+        int secondMax = -2147483648;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == firstMax)
+                ;
+            else if (secondMax <= nums[i]) {
+                secondMax = nums[i];
+                secondH = true;
+            }            
+        }
+        
+        boolean thirdH = false;
+        int thirdMax = -2147483648;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == firstMax || nums[i] == secondMax)
+                ;
+            else if (thirdMax <= nums[i]) {
+                thirdMax = nums[i];
+                thirdH = true;
+            }             
+        }
+        
+        if (thirdH)
+            return thirdMax;
+        else
+            return firstMax;
+    }
+}
